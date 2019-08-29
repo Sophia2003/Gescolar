@@ -1,4 +1,4 @@
-<?php>
+<?php
 /**
  *  Arquivo para registrar os dados de um aluno no banco de dados.
  */
@@ -29,3 +29,19 @@ if(isset($_REQUEST['cadastrar']))
         echo $e->getMessage();
     }
 }
+?>
+<div>
+<fieldset>
+    <legend> Cadastro de Aluno </legend>
+       <form action="cadatrar_alunos.php?cadastrar-true">
+       <label>Nome: <input type="text" name="nome" requiered /> </label>
+       <label>Cidade: <input type="text" name="cidade" requiered /> </label>
+       <label>CEP: <input type="text" name="cep" requiered /> </label>
+       <label>Bairro: <input type="text" name="bairro" requiered /> </label>
+       <label>Rua: <input type="text" name="rua" requiered /> </label>
+       <label>Estado: <input type="text" name="estado" requiered /> </label>
+       <label>Data Nasc: <input type="text" name="data_nascimento" requiered /> </label>
+       <button type="submit">Salvar</button>
+       </form>
+    </legend>
+</div>
