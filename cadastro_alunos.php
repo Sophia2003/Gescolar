@@ -30,6 +30,7 @@ if(isset($_REQUEST['cadastrar']))
     }
 }
 ?>
+<link href="css/estilos.css" type="text/css" rel="stylesheet" />
 <div>
 <fieldset>
     <legend> Cadastro de Aluno </legend>
