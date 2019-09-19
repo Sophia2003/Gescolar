@@ -2,9 +2,9 @@
 /**
  * Arquivo para registrar os dados de um aluno no banco de dados.
  */
-if(isset($_REQUEST['atualizar']))
+try
 {
-    try
+    if(isset($_REQUEST['atualizar']))
     {
         include 'includes/conexao.php';
 
@@ -26,12 +26,27 @@ if(isset($_REQUEST['atualizar']))
         $stmt->bindParam(11, $_REQUEST['id_aluno']);
         $stmt->execute();
         
-    } catch(Exception $e) {
-        echo $e->getMessage();
+    }  
+    
+    if (isset($_REQUEST['excluir']))
+    {
+        $stmt = $conexao->prepare("DELETE FROM aluno WHERE id = ?");
+        $stmt->bindParam(1, $_REQUEST['id_aluno']);
+        $stmt->execute();
+        header("location: lista_alunos.php");
     }
+
+    $stmt = $conexao->prepare("SELECT * FROM aluno WHERE id = ?");
+    $stmt->bindParam(1, $_REQUEST['id_aluno']);
+    $stmt_>execute();
+    $aluno = $stmt->fechObject();
+
+    }catch(Exception $e) {
+        echo $e->getMessage();
 }
 ?>
 <link href="css/estilos.css" type="text/css" rel="stylesheet" />
+<?php include_once 'includes/cabecalho' ?>
 <div>
 <fieldset>
      <legend>Cadastro de Aluno</legend>
@@ -43,6 +58,7 @@ if(isset($_REQUEST['atualizar']))
         <label>Rua: <input type="text" name="rua" required /> </label> 
         <label>Estado: <input type="text" name="estado" required /> </label>
         <label>Data Nascimento: <input type="text" name="data_nascimento" required /> </label> 
+        <a href="editar_alunos.php?excluir=true&id=<?= $aluno->id?>" >Excluir</a>
         <button type="submit">Salvar</button>
         </form>
      </legend>
