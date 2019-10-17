@@ -31,10 +31,15 @@ if(isset($_REQUEST['cadastrar']))
 }
 ?>
 <link href="css/estilos.css" type="text/css" rel="stylesheet" />
+
+<script type="text/javascript" sec="js/validacao_cad_aluno.js"> </script>
+
+<?php include_once 'includes/cabecalho.php' ?>
+
 <div>
 <fieldset>
     <legend> Cadastro de Aluno </legend>
-       <form action="cadatrar_alunos.php?cadastrar-true">
+       <form action="cadatrar_alunos.php?cadastrar-true" method="post" onsubmit>
        <label>Nome: <input type="text" name="nome" requiered /> </label>
        <label>Cidade: <input type="text" name="cidade" requiered /> </label>
        <label>CEP: <input type="text" name="cep" requiered /> </label>
